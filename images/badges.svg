@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <!-- Savings Master Badge -->
+  <g id="savings-master" transform="translate(0,0)">
+    <circle cx="80" cy="80" r="60" fill="#4CAF50" />
+    <path d="M60,80 Q80,40 100,80 T140,80" stroke="#FFF" fill="none" stroke-width="8" />
+    <circle cx="80" cy="80" r="25" fill="#81C784" />
+  </g>
+
+  <!-- Budget Pro Badge -->
+  <g id="budget-pro" transform="translate(200,0)">
+    <rect x="40" y="40" width="80" height="80" rx="20" fill="#2196F3" />
+    <polyline points="50,80 70,100 110,60" stroke="#FFF" fill="none" stroke-width="8" />
+  </g>
+
+  <!-- Investment Guru Badge -->
+  <g id="investment-guru" transform="translate(400,0)">
+    <polygon points="80,20 100,60 140,60 110,90 120,130 80,110 40,130 50,90 20,60 60,60" fill="#FFC107" />
+    <circle cx="80" cy="80" r="20" fill="#FFD54F" />
+  </g>
+
+  <!-- Achievement Icons -->
+  <g id="achievement-icons" transform="translate(0,200)">
+    <!-- Trophy -->
+    <path d="M60,40 h40 v60 c0,20 -40,20 -40,0 z" fill="#FFD700" />
+    <rect x="70" y="100" width="20" height="20" fill="#FFD700" />
+    <rect x="60" y="120" width="40" height="10" fill="#FFD700" />
+    
+    <!-- Medal -->
+    <circle cx="280" cy="80" r="40" fill="#C0C0C0" />
+    <rect x="260" y="70" width="40" height="60" fill="#C0C0C0" transform="rotate(45,280,80)" />
+    
+    <!-- Star -->
+    <path d="M480,40 l-20,40 -40,10 30,30 -10,50 40,-20 40,20 -10,-50 30,-30 -40,-10 z" fill="#FFC107" />
+  </g>
+</svg>

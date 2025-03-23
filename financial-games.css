@@ -1,0 +1,256 @@
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    animation: fadeIn 0.8s ease-out;
+    margin: 2rem auto;
+    max-width: 1400px;
+    perspective: 1000px;
+}
+
+.game-card {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    animation: cardAppear 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+.game-card:hover::before {
+    left: 100%;
+}
+
+.game-card:hover {
+    transform: translateY(-10px) rotateX(10deg);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    background: linear-gradient(145deg, #ffffff, #f0f8ff);
+}
+
+.game-icon {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    animation: float 3s ease-in-out infinite;
+    text-shadow: 0 0 15px rgba(var(--primary-rgb), 0.3);
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover .game-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.game-rewards {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.2rem 0;
+    font-size: 1.1rem;
+    gap: 1rem;
+}
+
+.points, .cashback {
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    animation: pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.1);
+}
+
+.game-card:hover .points,
+.game-card:hover .cashback {
+    background: rgba(var(--primary-rgb), 0.15);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.2);
+}
+
+/* Game-specific styles */
+.budget-puzzle {
+    padding: 1rem;
+}
+
+.puzzle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.puzzle-item {
+    padding: 1rem;
+    background: #fff;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    cursor: move;
+    transition: all 0.3s ease;
+}
+
+.puzzle-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.puzzle-categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.category {
+    padding: 1rem;
+    border: 2px dashed var(--primary-color);
+    border-radius: 10px;
+    text-align: center;
+    min-height: 100px;
+}
+
+.savings-challenge {
+    text-align: center;
+    padding: 1rem;
+}
+
+.timer {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+.savings-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.savings-item {
+    padding: 1rem 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.savings-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.investment-quiz {
+    padding: 1rem;
+}
+
+.quiz-progress {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.option {
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.option:hover {
+    transform: translateY(-3px);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.1); }
+    50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes celebrate {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); filter: brightness(1.2); }
+}
+
+.game-complete {
+    position: relative;
+    animation: celebrate 0.6s ease-in-out;
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.particle {
+    position: absolute;
+    background: var(--primary-color);
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    animation: particle 1s ease-out forwards;
+}
+
+@keyframes particle {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--x, 100px), var(--y, -100px)) scale(0); opacity: 0; }
+}
+
+.progress-animation {
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-color-light));
+    background-size: 200% 100%;
+    animation: gradient-shift 2s linear infinite;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+@keyframes cardAppear {
+    0% { opacity: 0; transform: translateY(40px) rotateX(20deg) scale(0.9); }
+    100% { opacity: 1; transform: translateY(0) rotateX(0) scale(1); }
+}
+
+.game-card:nth-child(1) { animation-delay: 0.1s; }
+.game-card:nth-child(2) { animation-delay: 0.2s; }
+.game-card:nth-child(3) { animation-delay: 0.3s; }
+.game-card:nth-child(4) { animation-delay: 0.4s; }

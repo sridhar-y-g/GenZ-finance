@@ -1,0 +1,91 @@
+/* Particle Effects */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    animation: particle-float 3s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+@keyframes particle-float {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translate(var(--x, 10px), var(--y, -10px)) rotate(var(--r, 180deg));
+        opacity: 0.8;
+    }
+}
+
+/* Game Completion Animation */
+@keyframes celebrate {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Progress Bar Animation */
+@keyframes progress-fill {
+    from { width: 0; }
+    to { width: var(--progress, 100%); }
+}
+
+/* Score Counter Animation */
+@keyframes count-up {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Achievement Unlock Effect */
+@keyframes unlock {
+    0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+    60% { transform: scale(1.2) rotate(5deg); opacity: 0.8; }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+/* Game Card Shimmer */
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* Apply Animations */
+.game-complete {
+    animation: celebrate 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-bar {
+    animation: progress-fill 1s ease-out forwards;
+}
+
+.score-counter {
+    animation: count-up 0.3s ease-out forwards;
+}
+
+.achievement {
+    animation: unlock 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.shimmer-effect {
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.2) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}

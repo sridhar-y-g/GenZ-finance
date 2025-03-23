@@ -1,0 +1,262 @@
+.achievement-card {
+    transition: transform 0.3s ease;
+}
+
+.streak-card {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.streak-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shine 2s infinite;
+}
+
+.streak-icon {
+    font-size: 2.5rem;
+    color: #ff6b6b;
+    margin-right: 1.5rem;
+    animation: flame 1.5s ease-in-out infinite;
+}
+
+.streak-info {
+    flex: 1;
+}
+
+.streak-count {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    animation: countUp 0.5s ease-out;
+}
+
+.streak-progress {
+    flex: 2;
+    padding-left: 1.5rem;
+}
+
+@keyframes flame {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes countUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.achievement-card:hover {
+    transform: scale(1.02);
+}
+
+.achievement-stat {
+    padding: 1.5rem;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.achievement-stat:hover {
+    transform: translateY(-5px);
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.15);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.badges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.badge-item {
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.badge-item::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.2), transparent);
+    transition: all 0.5s ease;
+}
+
+.badge-item:hover::before {
+    top: 0;
+}
+
+.badge-item.unlocked {
+    border: 2px solid var(--success-color);
+}
+
+.badge-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.badge-icon.locked {
+    color: #6c757d;
+    opacity: 0.5;
+}
+
+.badge-item:hover .badge-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.reward-item {
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.reward-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.reward-item img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.reward-item:hover img {
+    transform: scale(1.1);
+}
+
+.leaderboard-card {
+    animation: slideUp 0.5s ease-out;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.leaderboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.leaderboard-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: 0.5s;
+}
+
+.leaderboard-card:hover::before {
+    left: 100%;
+}
+
+.challenge-item {
+    padding: 1rem;
+    border-radius: 10px;
+    background: #fff;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+}
+
+.challenge-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.challenge-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    animation: pulse 2s infinite;
+}
+
+.progress {
+    height: 8px;
+    margin: 0.5rem 0;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+    animation: progressFill 1.5s ease-out;
+    transition: width 0.6s ease;
+    animation: progressFill 1s ease-out;
+}
+
+@keyframes progressFill {
+    from { width: 0; }
+}
+
+#downloadReport {
+    transition: all 0.3s ease;
+}
+
+#downloadReport:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#downloadReport i {
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+#downloadReport:hover i {
+    transform: translateY(-2px);
+}

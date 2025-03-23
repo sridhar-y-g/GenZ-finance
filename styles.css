@@ -1,0 +1,452 @@
+/* Main Styles */
+:root {
+    --primary-color: #0d6efd;
+    --success-color: #198754;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --dark-color: #212529;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Navbar Animations */
+.navbar-brand {
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar-brand::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease;
+}
+
+.navbar-brand:hover::after {
+    width: 100%;
+}
+
+/* Stats Card Animations */
+.savings-overview-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    box-shadow: 5px 5px 15px #d9d9d9, -5px -5px 15px #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.animated-title {
+    animation: fadeInText 0.8s ease-out;
+}
+
+.chart-container {
+    position: relative;
+    padding: 1rem;
+    animation: scaleIn 0.8s ease-out;
+}
+
+.animated-chart {
+    transition: transform 0.3s ease;
+}
+
+.animated-chart:hover {
+    transform: scale(1.02);
+}
+
+.achievement-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    animation: slideIn 0.8s ease-out;
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+}
+
+.amount-highlight {
+    color: var(--success-color);
+    animation: pulse 2s infinite;
+}
+
+.progress-container {
+    position: relative;
+    padding: 1rem 0;
+}
+
+.animated-progress {
+    background: linear-gradient(90deg, var(--success-color), #81C784);
+    background-size: 200% 100%;
+    animation: shine 3s infinite linear;
+    transition: width 1s ease-in-out;
+}
+
+.milestone-markers {
+    position: absolute;
+    width: 100%;
+    bottom: -10px;
+    left: 0;
+}
+
+.milestone {
+    position: absolute;
+    transform: translateX(-50%);
+    color: var(--dark-color);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.milestone.achieved {
+    color: var(--success-color);
+    opacity: 1;
+    animation: bounce 2s infinite;
+}
+
+.milestone i {
+    font-size: 1.2rem;
+}
+
+.success-message {
+    color: var(--success-color);
+    animation: fadeInText 0.5s ease-out;
+}
+
+.floating-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.floating-card:hover::before {
+    left: 100%;
+}
+
+.product-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    animation: bounce 2s infinite;
+}
+
+.feature-list {
+    margin-top: 1.5rem;
+}
+
+.feature-item {
+    margin-bottom: 0.8rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+.highlight-text {
+    color: var(--success-color);
+    font-weight: 600;
+    animation: pulse 2s infinite;
+}
+
+.glow-button {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+    border: none;
+    animation: glowPulse 2s infinite;
+}
+
+.glow-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+}
+
+.stats-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.stats-card:hover::before {
+    left: 100%;
+    transition: 0.5s;
+}
+
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.goal-card {
+    padding: 1.5rem;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.goal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.goal-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    animation: bounce 2s infinite;
+}
+
+.goal-progress {
+    margin-top: 1rem;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+.progress-percent {
+    font-size: 0.9rem;
+    color: var(--success-color);
+    font-weight: 600;
+    animation: pulse 2s infinite;
+}
+
+.goal-card .milestone-markers {
+    bottom: -15px;
+}
+
+.goal-card .milestone i {
+    font-size: 1rem;
+}
+
+.goal-card .glow-button {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+}
+
+.stats-card h3 {
+    background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: numberPulse 2s infinite;
+}
+
+@keyframes numberPulse {
+    0% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.05); filter: brightness(1.2); }
+    100% { transform: scale(1); filter: brightness(1); }
+}
+
+@keyframes celebrate {
+    0% { transform: scale(0) rotate(0deg); opacity: 0; }
+    50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+    100% { transform: scale(1) rotate(360deg); opacity: 1; }
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1); opacity: 1; }
+}
+
+.milestone.achieved::after {
+    content: '✨';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 0.8rem;
+    animation: sparkle 1.5s infinite;
+}
+
+.goal-progress.completed .progress-bar {
+    animation: celebrate 1s ease-out, shine 3s infinite linear;
+}
+
+.goal-icon.completed {
+    animation: celebrate 1s ease-out, bounce 2s infinite;
+    color: var(--success-color);
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    25% { transform: translateY(-5px) rotate(-5deg); }
+    75% { transform: translateY(5px) rotate(5deg); }
+}
+
+@keyframes progressGlow {
+    0%, 100% { box-shadow: 0 0 5px var(--success-color); }
+    50% { box-shadow: 0 0 15px var(--success-color); }
+}
+
+@keyframes celebrationSpin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Quick Actions Animation */
+.btn-outline-primary, .btn-outline-success, 
+.btn-outline-warning, .btn-outline-info {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-outline-primary::before, .btn-outline-success::before,
+.btn-outline-warning::before, .btn-outline-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: all 0.5s ease;
+}
+
+.btn-outline-primary:hover::before, .btn-outline-success:hover::before,
+.btn-outline-warning:hover::before, .btn-outline-info:hover::before {
+    left: 100%;
+}
+
+/* Chatbot Card Styling */
+.chatbot-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Help Tooltip Animation */
+#helpTooltip {
+    animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Parental Control Highlight */
+#parentalControl {
+    position: relative;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(13, 110, 253, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+    }
+}
+
+/* Language Selector Styling */
+#languageSelector {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+#languageSelector:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(13, 110, 253, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stats-card {
+        margin-bottom: 1rem;
+    }
+    
+    .quick-actions .btn {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Toast Notification */
+.toast {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

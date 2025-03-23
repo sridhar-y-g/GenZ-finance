@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenZ Finance - Smart Banking for the Next Generation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="shared-animations.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">GenZ Finance</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="budget.html">Budget</a></li>
+                    <li class="nav-item"><a class="nav-link" href="savings.html">Savings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rewards.html">Rewards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="analytics.html">Analytics</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <select class="form-select me-2" id="languageSelector">
+                        <option value="en">English</option>
+                        <option value="kn">ಕನ್ನಡ</option>
+                        <option value="hi">हिंदी</option>
+                    </select>
+                    <button class="btn btn-light" id="parentalControl">Parental Controls</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <div class="row">
+            <div class="col-md-8">
+                <section id="dashboard" class="mb-4">
+                    <h2 class="section-title" data-translate="dashboard_title" data-section="nav">Your Financial Dashboard</h2>
+                    <div class="dashboard-stats">
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <h5 data-translate="totalSavings" data-section="stats">Total Savings</h5>
+                                        <h3 class="mb-0">₹25,000</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <h5 data-translate="monthlyBudget" data-section="stats">Monthly Budget</h5>
+                                        <h3 class="mb-0">₹5,000</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <h5 data-translate="rewardPoints" data-section="stats">Reward Points</h5>
+                                        <h3 class="mb-0">250</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="quickActions" class="mb-4">
+                    <h3>Quick Actions</h3>
+                    <div class="row g-3">
+                        <div class="col-6 col-md-3">
+                            <a href="budget.html" class="btn btn-outline-primary w-100 py-3">
+                                <i class="fas fa-calculator mb-2"></i>
+                                <div data-translate="createBudget" data-section="quickActions">Create Budget</div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="savings.html" class="btn btn-outline-success w-100 py-3">
+                                <i class="fas fa-piggy-bank mb-2"></i>
+                                <div data-translate="startSaving" data-section="quickActions">Start Saving</div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="rewards.html" class="btn btn-outline-warning w-100 py-3">
+                                <i class="fas fa-gift mb-2"></i>
+                                <div data-translate="viewRewards" data-section="quickActions">View Rewards</div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="analytics.html" class="btn btn-outline-info w-100 py-3">
+                                <i class="fas fa-chart-line mb-2"></i>
+                                <div data-translate="viewAnalytics" data-section="quickActions">Analytics</div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card chatbot-card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Financial Assistant</h5>
+                    </div>
+                    <div class="card-body" id="chatbotMessages">
+                        <!-- Chatbot messages will appear here -->
+                    </div>
+                    <div class="card-footer">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="chatbotInput" placeholder="Ask me anything...">
+                            <button class="btn btn-primary" id="sendMessage">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="helpTooltip" class="toast" role="alert">
+            <div class="toast-header">
+                <strong class="me-auto">Need Help?</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                Click on any section to learn more about its features!
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+    <script src="app.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html>

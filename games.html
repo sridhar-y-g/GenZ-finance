@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Games - Learn & Earn</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="financial-games.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Financial Games</h1>
+        <p class="text-center mb-5">Play, learn, and earn rewards while mastering financial concepts!</p>
+
+        <div class="games-grid">
+            <!-- Budget Master Puzzle -->
+            <div class="game-card budget-puzzle">
+                <div class="game-icon">🧩</div>
+                <h3>Budget Master Puzzle</h3>
+                <p>Match income and expenses to create the perfect budget balance.</p>
+                <div class="game-rewards">
+                    <span class="points">+50 Points</span>
+                    <span class="cashback">2% Cashback</span>
+                </div>
+                <button class="btn btn-primary mt-3" onclick="startBudgetPuzzle()">Play Now</button>
+            </div>
+
+            <!-- Savings Sprint -->
+            <div class="game-card savings-challenge">
+                <div class="game-icon">⏱️</div>
+                <h3>Savings Sprint</h3>
+                <p>Race against time to maximize your savings strategy!</p>
+                <div class="game-rewards">
+                    <span class="points">+75 Points</span>
+                    <span class="cashback">3% Cashback</span>
+                </div>
+                <button class="btn btn-primary mt-3" onclick="startSavingsChallenge()">Play Now</button>
+            </div>
+
+            <!-- Investment IQ Quiz -->
+            <div class="game-card investment-quiz">
+                <div class="game-icon">📈</div>
+                <h3>Investment IQ</h3>
+                <p>Test your investment knowledge and make smart decisions.</p>
+                <div class="game-rewards">
+                    <span class="points">+100 Points</span>
+                    <span class="cashback">5% Cashback</span>
+                </div>
+                <button class="btn btn-primary mt-3" onclick="startInvestmentQuiz()">Play Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="financial-games.js"></script>
+</body>
+</html>

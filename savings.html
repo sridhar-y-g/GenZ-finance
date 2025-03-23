@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings & Deposits - GenZ Finance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="shared-animations.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">GenZ Finance</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="budget.html">Budget</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="savings.html">Savings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rewards.html">Rewards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="analytics.html">Analytics</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <select class="form-select me-2" id="languageSelector">
+                        <option value="en">English</option>
+                        <option value="kn">ಕನ್ನಡ</option>
+                        <option value="hi">हिंदी</option>
+                    </select>
+                    <button class="btn btn-light" id="parentalControl">Parental Controls</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-4 savings-overview-card">
+                    <div class="card-header">
+                        <h4 class="mb-0 animated-title"><i class="fas fa-piggy-bank me-2"></i>Your Savings Overview</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="chart-container">
+                                    <canvas id="savingsChart" class="animated-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="savings-summary achievement-card">
+                                    <h5 class="text-gradient">Total Savings</h5>
+                                    <h2 class="mb-4 amount-highlight">₹25,000</h2>
+                                    <div class="progress-container mb-3">
+                                        <div class="progress">
+                                            <div class="progress-bar animated-progress" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75% of Goal</div>
+                                        </div>
+                                        <div class="milestone-markers">
+                                            <span class="milestone achieved" style="left: 25%" title="₹10,000"><i class="fas fa-star"></i></span>
+                                            <span class="milestone achieved" style="left: 50%" title="₹20,000"><i class="fas fa-trophy"></i></span>
+                                            <span class="milestone" style="left: 75%" title="₹30,000"><i class="fas fa-crown"></i></span>
+                                        </div>
+                                    </div>
+                                    <p class="success-message"><i class="fas fa-check-circle me-2"></i>You're on track to reach your savings goal!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="savings-products mb-4">
+                            <h5 class="mb-3 animated-title"><i class="fas fa-gift me-2"></i>Available Savings Products</h5>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="card h-100 product-card floating-card" data-bs-toggle="modal" data-bs-target="#rdModal">
+                                        <div class="card-body">
+                                            <div class="product-icon"><i class="fas fa-piggy-bank"></i></div>
+                                            <h5 class="card-title text-gradient">Recurring Deposit (RD)</h5>
+                                            <p class="card-text highlight-text">Start with just ₹500/month</p>
+                                            <ul class="list-unstyled feature-list">
+                                                <li class="feature-item"><i class="fas fa-check-circle text-success"></i> Interest rate: 7.5% p.a.</li>
+                                                <li class="feature-item"><i class="fas fa-check-circle text-success"></i> Flexible tenure: 6-60 months</li>
+                                                <li class="feature-item"><i class="fas fa-check-circle text-success"></i> Monthly deposits</li>
+                                            </ul>
+                                            <button class="btn btn-primary mt-2 glow-button">Open RD Account</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 product-card floating-card" data-bs-toggle="modal" data-bs-target="#fdModal">
+                                        <div class="card-body">
+                                            <div class="product-icon"><i class="fas fa-vault"></i></div>
+                                            <h5 class="card-title text-gradient">Fixed Deposit (FD)</h5>
+                                            <p class="card-text highlight-text">Lock-in period: 1-5 years</p>
+                                            <ul class="list-unstyled feature-list">
+                                                <li class="feature-item"><i class="fas fa-check-circle text-success"></i> Interest rate: up to 8.5% p.a.</li>
+                                                <li class="feature-item"><i class="fas fa-check-circle text-success"></i> Minimum deposit: ₹1,000</li>
+                                                <li class="feature-item"><i class="fas fa-check-circle text-success"></i> Higher returns</li>
+                                            </ul>
+                                            <button class="btn btn-primary mt-2 glow-button">Open FD Account</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="savings-goals">
+                            <h5 class="mb-3 animated-title"><i class="fas fa-bullseye me-2"></i>Your Savings Goals</h5>
+                            <div class="goals-grid">
+                                <div class="goal-card floating-card">
+                                    <div class="goal-icon"><i class="fas fa-plane-departure"></i></div>
+                                    <h6 class="text-gradient">Travel Fund</h6>
+                                    <div class="goal-progress">
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar animated-progress" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <span class="progress-text">₹30,000 / ₹50,000</span>
+                                            <span class="progress-percent">60%</span>
+                                        </div>
+                                        <div class="milestone-markers">
+                                            <span class="milestone achieved" style="left: 20%" title="₹10,000"><i class="fas fa-star"></i></span>
+                                            <span class="milestone achieved" style="left: 40%" title="₹20,000"><i class="fas fa-medal"></i></span>
+                                            <span class="milestone achieved" style="left: 60%" title="₹30,000"><i class="fas fa-trophy"></i></span>
+                                            <span class="milestone" style="left: 80%" title="₹40,000"><i class="fas fa-crown"></i></span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary mt-3 glow-button">Add Funds</button>
+                                </div>
+
+                                <div class="goal-card floating-card">
+                                    <div class="goal-icon"><i class="fas fa-laptop"></i></div>
+                                    <h6 class="text-gradient">New Laptop</h6>
+                                    <div class="goal-progress">
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar animated-progress" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <span class="progress-text">₹22,500 / ₹50,000</span>
+                                            <span class="progress-percent">45%</span>
+                                        </div>
+                                        <div class="milestone-markers">
+                                            <span class="milestone achieved" style="left: 25%" title="₹12,500"><i class="fas fa-star"></i></span>
+                                            <span class="milestone achieved" style="left: 45%" title="₹22,500"><i class="fas fa-medal"></i></span>
+                                            <span class="milestone" style="left: 75%" title="₹37,500"><i class="fas fa-trophy"></i></span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary mt-3 glow-button">Add Funds</button>
+                                </div>
+
+                                <div class="goal-card floating-card">
+                                    <div class="goal-icon"><i class="fas fa-graduation-cap"></i></div>
+                                    <h6 class="text-gradient">Education Fund</h6>
+                                    <div class="goal-progress">
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar animated-progress" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <span class="progress-text">₹80,000 / ₹100,000</span>
+                                            <span class="progress-percent">80%</span>
+                                        </div>
+                                        <div class="milestone-markers">
+                                            <span class="milestone achieved" style="left: 25%" title="₹25,000"><i class="fas fa-star"></i></span>
+                                            <span class="milestone achieved" style="left: 50%" title="₹50,000"><i class="fas fa-medal"></i></span>
+                                            <span class="milestone achieved" style="left: 75%" title="₹75,000"><i class="fas fa-trophy"></i></span>
+                                            <span class="milestone" style="left: 90%" title="₹90,000"><i class="fas fa-crown"></i></span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary mt-3 glow-button">Add Funds</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Savings Calculator</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="savingsCalculator">
+                            <div class="mb-3">
+                                <label class="form-label">Investment Type</label>
+                                <select class="form-select" id="investmentType">
+                                    <option value="rd">Recurring Deposit</option>
+                                    <option value="fd">Fixed Deposit</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Amount (₹)</label>
+                                <input type="number" class="form-control" id="investmentAmount" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Duration (Months)</label>
+                                <input type="number" class="form-control" id="duration" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Calculate Returns</button>
+                        </form>
+                        <div id="calculationResult" class="mt-3"></div>
+                    </div>
+                </div>
+
+                <div class="card chatbot-card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Savings Assistant</h5>
+                    </div>
+                    <div class="card-body" id="chatbotMessages">
+                        <!-- Chatbot messages will appear here -->
+                    </div>
+                    <div class="card-footer">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="chatbotInput" placeholder="Ask about savings...">
+                            <button class="btn btn-primary" id="sendMessage">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- RD Modal -->
+    <div class="modal fade" id="rdModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Open Recurring Deposit Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="rdForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Monthly Deposit Amount</label>
+                                <input type="number" class="form-control" required min="500">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Tenure (Months)</label>
+                                <select class="form-select" required>
+                                    <option value="6">6 Months</option>
+                                    <option value="12">12 Months</option>
+                                    <option value="24">24 Months</option>
+                                    <option value="36">36 Months</option>
+                                    <option value="60">60 Months</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Auto-debit Account</label>
+                            <select class="form-select" required>
+                                <option value="">Select Account</option>
+                                <option value="savings">Savings Account - XXXX1234</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Debit Date</label>
+                            <select class="form-select" required>
+                                <option value="1">1st of every month</option>
+                                <option value="5">5th of every month</option>
+                                <option value="10">10th of every month</option>
+                                <option value="15">15th of every month</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="rdForm" class="btn btn-primary">Open RD Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FD Modal -->
+    <div class="modal fade" id="fdModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Open Fixed Deposit Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="fdForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Deposit Amount</label>
+                                <input type="number" class="form-control" required min="1000">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Tenure</label>
+                                <select class="form-select" required>
+                                    <option value="12">1 Year</option>
+                                    <option value="24">2 Years</option>
+                                    <option value="36">3 Years</option>
+                                    <option value="48">4 Years</option>
+                                    <option value="60">5 Years</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Source Account</label>
+                            <select class="form-select" required>
+                                <option value="">Select Account</option>
+                                <option value="savings">Savings Account - XXXX1234</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Interest Payout</label>
+                            <select class="form-select" required>
+                                <option value="monthly">Monthly</option>
+                                <option value="quarterly">Quarterly</option>
+                                <option value="yearly">Yearly</option>
+                                <option value="maturity">At Maturity</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="fdForm" class="btn btn-primary">Open FD Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="savings.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html>

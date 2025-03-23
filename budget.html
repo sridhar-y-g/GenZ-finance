@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Planner - GenZ Finance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="shared-animations.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">GenZ Finance</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="budget.html">Budget</a></li>
+                    <li class="nav-item"><a class="nav-link" href="savings.html">Savings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rewards.html">Rewards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="analytics.html">Analytics</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <select class="form-select me-2" id="languageSelector">
+                        <option value="en">English</option>
+                        <option value="kn">ಕನ್ನಡ</option>
+                        <option value="hi">हिंदी</option>
+                    </select>
+                    <button class="btn btn-light" id="parentalControl">Parental Controls</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">Budget Planner</h4>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addExpenseModal">
+                            <i class="fas fa-plus"></i> Add Expense
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <canvas id="expenseChart"></canvas>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="budget-summary">
+                                    <h5>Monthly Overview</h5>
+                                    <div class="progress mb-3">
+                                        <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Total Budget:</span>
+                                        <strong>₹10,000</strong>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Spent:</span>
+                                        <strong class="text-danger">₹6,500</strong>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span>Remaining:</span>
+                                        <strong class="text-success">₹3,500</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Category</th>
+                                        <th>Description</th>
+                                        <th>Amount</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="expenseList">
+                                    <!-- Expenses will be dynamically added here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0">Budget Categories</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="categoryCards">
+                            <!-- Category cards will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Quick Tips</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="tip-card mb-3">
+                            <i class="fas fa-lightbulb text-warning"></i>
+                            <p>Set realistic budget goals and track your progress regularly.</p>
+                        </div>
+                        <div class="tip-card mb-3">
+                            <i class="fas fa-piggy-bank text-success"></i>
+                            <p>Save at least 20% of your income for future goals.</p>
+                        </div>
+                        <div class="tip-card">
+                            <i class="fas fa-chart-line text-primary"></i>
+                            <p>Review your spending patterns to identify areas for improvement.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card chatbot-card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Budget Assistant</h5>
+                    </div>
+                    <div class="card-body" id="chatbotMessages">
+                        <!-- Chatbot messages will appear here -->
+                    </div>
+                    <div class="card-footer">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="chatbotInput" placeholder="Ask about budgeting...">
+                            <button class="btn btn-primary" id="sendMessage">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Expense Modal -->
+    <div class="modal fade" id="addExpenseModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Expense</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="expenseForm">
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select class="form-select" required>
+                                <option value="">Select Category</option>
+                                <option value="food">Food</option>
+                                <option value="transport">Transport</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="shopping">Shopping</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Amount</label>
+                            <input type="number" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Date</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="expenseForm" class="btn btn-primary">Add Expense</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="budget.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html>
